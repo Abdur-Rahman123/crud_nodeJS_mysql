@@ -11,7 +11,11 @@ router.get('*',  (req, res, next)=>{
 });
 
 router.get('/', (req, res)=>{
-	res.render('home/index', {name: 'alamin', id:'123'});
+	// get ID
+	userModel.getId(req.session.password, req.session.username,function(result){
+		if(result.length < 2 && result[0].password == req.session.password && result[0].username == req.session.username){
+			res.render('home/index', {name: result[0].username, id: result[0].id });
+	});
 });
 
 

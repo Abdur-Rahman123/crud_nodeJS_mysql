@@ -11,8 +11,14 @@ module.exports= {
 			}
 		});
 	},
+	getId: function(password, username, callback){
+		var sql = `SELECT * FROM user WHERE username = ${username} AND password = ${password}`;
+		db.getResults(sql, function(result){
+			callback(result);
+		});
+	},
 	getById: function(id, callback){
-
+		
 	},
 	getAll: function(callback){
 		var sql = "select * from user";
