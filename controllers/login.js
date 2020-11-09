@@ -13,6 +13,10 @@ router.post('/', (req, res)=>{
 		password: req.body.password
 	};
 
+	// session added
+	req.session.username = req.body.username;
+	req.session.password = req.body.password;
+
 	userModel.validate(user, function(status){
 		if(status){
 			res.cookie('uname', req.body.username);
