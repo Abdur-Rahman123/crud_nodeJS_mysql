@@ -19,27 +19,17 @@
 			<td>Action</td>
 		</tr>
 		
-		<!-- <% for(var i=0; i < users.length; i++){ %>
-			
-			<tr>
-				<td><%= users[i][0] %></td>
-				<td><%= users[i][1] %></td>
-				<td><%= users[i][2] %></td>
-				<td><%= users[i][3] %></td>
-			</tr>
-
-		<% } %> -->
 
 		<% 
-			users.forEach( function(std){ %>
+			users.forEach( function(user){ %>
 			<tr>
-				<td><%= std.id %></td>
-				<td><%= std.username %></td>
-				<td><%= std.password %></td>
-				<td><%= std.type %></td>
+				<td><%= user.id %></td>
+				<td><%= user.username %></td>
+				<td><%= user.password %></td>
+				<td><%= user.type %></td>
 				<td>
-					<a href="/user/edit/<%= std.id %>">Edit</a> |
-					<a href="/user/delete/<%= std.id %>">Delete</a>
+					<a href="/user/edit/<%= user.id %>">Edit</a> |
+					<a href="/user/delete/<%= user.id %>">Delete</a>
 				</td>
 			</tr>
 

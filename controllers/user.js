@@ -15,12 +15,7 @@ router.get('/create', (req, res)=>{
 
 
 router.post('/create', (req, res)=>{
-	
-	/*var user = [req.body.uname, req.body.password, req.body.email];
-	var newlist = req.session.userlist;
-	newlist.push(user);
-	req.session.userlist = newlist;*/
-	
+		
 	res.send('New user info:'+
 				"<br> Username: "+req.body.username+
 				"<br> Password: "+req.body.password+
