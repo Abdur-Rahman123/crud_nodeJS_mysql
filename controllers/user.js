@@ -16,12 +16,16 @@ router.get('/create', (req, res)=>{
 
 
 router.post('/create', (req, res)=>{
-		
-	res.send('New user info:'+
-				"<br> Username: "+req.body.username+
-				"<br> Password: "+req.body.password+
-				"<br> Email: "+req.body.email
-			);
+	var user = {
+		id: req.params.id,
+		username: req.body.username,
+		password: req.body.password,
+		type: 'Software engineer'	
+	};
+
+	userModel.insert(user, (result) => {
+		res.send(result);
+	});
 });
 
 router.get('/edit/:id', (req, res)=>{

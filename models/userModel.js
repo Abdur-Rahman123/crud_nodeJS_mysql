@@ -29,8 +29,11 @@ module.exports= {
 			callback(results);
 		});
 	},
-	insert: function(id, callback){
-		
+	insert: function(user, callback){
+		var sql = `INSERT INTO user (id, username, password, type) VALUES (${user.id}, ${user.username}, ${user.password}, ${user.type})`;
+		db.execute(sql, (result) => {
+			callback(result);
+		});
 	},
 	update:function(user, callback){
 		var sql = `UPDATE user SET username = '${user.username}', password = '${user.password} WHERE id = ${user.id}'`;
