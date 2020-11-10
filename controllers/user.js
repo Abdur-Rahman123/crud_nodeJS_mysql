@@ -53,11 +53,21 @@ router.post('/edit/:id', (req, res)=>{
 });
 
 router.get('/delete/:id', (req, res)=>{
-	var user = {username: 'alamin', password: '123', email: 'email@gmail.com'};
-	res.render('user/delete', user);
+	userModel.getById(req.params.id, (result) => {
+		var user = {
+			username: result[0].username,
+			password: result[0].password, 
+			email: 'email@gmail.com'
+		};
+		res.render('user/delete', user);
+	});
+
 });
 
 router.post('/delete/:id', (req, res)=>{
+	userModel.delete(req.params.id, (result) => {
+		console.log(result);
+	});
 	res.redirect('/home/userlist');
 });
 

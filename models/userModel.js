@@ -42,6 +42,9 @@ module.exports= {
 		});
 	},
 	delete: function(id, callback){
-
+		var sql = `DELETE FROM user WHERE id = ${id}`;
+		db.execute(sql, (result) => {
+			callback(result);
+		});
 	}
 }
