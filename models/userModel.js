@@ -18,7 +18,10 @@ module.exports= {
 		});
 	},
 	getById: function(id, callback){
-		
+		var sql = `SELECT * FROM user WHERE id = ${id}`;
+		db.getResults(sql, function(result){
+			callback(result);
+		});
 	},
 	getAll: function(callback){
 		var sql = "select * from user";
@@ -26,11 +29,14 @@ module.exports= {
 			callback(results);
 		});
 	},
-	insert: function(user, callback){
-
+	insert: function(id, callback){
+		
 	},
 	update:function(user, callback){
-
+		var sql = `UPDATE user SET username = '${user.username}', password = '${user.password} WHERE id = ${user.id}'`;
+		db.execute(sql, (result) => {
+			callback(result);
+		});
 	},
 	delete: function(id, callback){
 

@@ -26,15 +26,25 @@ router.post('/create', (req, res)=>{
 
 router.get('/edit/:id', (req, res)=>{
 
-	var user = {
-		username: 'test',
-		password: 'test',
-		email: 'alamin@aiub.edu'
-	};
-	res.render('user/edit', user);
+	userModel.getById(req.params.id, (result) => {
+		var user = {
+			username: result[0].username,
+			password: result[0].password,
+			email: 'saqib@gmail.com'
+		};
+		res.render('user/edit', user);
+	});
 });
 
 router.post('/edit/:id', (req, res)=>{
+	var user = {
+		id: req.params.id;
+		username: req.body.username;
+		password: req.body.password;
+	}
+	userModel.update(user, (result) => {
+		console.log(result);
+	});
 	res.redirect('/home/userlist');
 });
 
